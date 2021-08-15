@@ -13,7 +13,7 @@ on:
 
 jobs:
   
-  Patch, Compile, Package into Artifact:
+  patch-build:
 
     runs-on: ubuntu-latest
     env:
@@ -42,10 +42,10 @@ jobs:
         name: maven-build
         path: my-app/
         
-  Build Image and Push to registry:
+  build-image-and-push:
   
 
-      needs: Patch, Compile, Package into Artifact
+      needs: patch-build
       runs-on: ubuntu-latest
       steps:
         - name: Download build artifact
