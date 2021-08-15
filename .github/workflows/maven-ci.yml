@@ -28,7 +28,7 @@ jobs:
         distribution: 'adopt'
         
     - name: Patch JAR version
-      run: mvn versions:set -D newVersion=${{ env.PATCH_VER }}
+      run: cd my-app && mvn versions:set -D newVersion=${{ env.PATCH_VER }}
       
     - name: Compile with Maven
       run: mvn compile
