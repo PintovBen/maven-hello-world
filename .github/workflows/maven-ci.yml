@@ -80,6 +80,7 @@ jobs:
   run-image:
        
        name: Run the Docker Image created in previous job
+       needs: build-image-and-push
        runs-on: ubuntu-latest
        container:
          image: benpintov/mavenhelloworld
