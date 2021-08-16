@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PATCH_VER: 1.0.1
-      IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/maven-hello-world:${{ env.PATCH_VER }}
+      IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/maven-hello-world:$PATCH_VER
    
     steps:
     - uses: actions/checkout@v2
