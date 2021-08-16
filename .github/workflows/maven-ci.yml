@@ -83,6 +83,14 @@ jobs:
        runs-on: ubuntu-latest
        container:
          image: ${{secrets.DOCKERHUB_USERNAME }}/mavenhelloworld:${{ env.PATCH_VER }}
+         
+       steps:
+        - name: Run image and log the user
+          run: |
+            whoami
+         
+
+        
 
             
         
