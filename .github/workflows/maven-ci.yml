@@ -82,7 +82,7 @@ jobs:
        name: Run the Docker Image created in previous job
        runs-on: ubuntu-latest
        container:
-         image: ${{secrets.DOCKERHUB_USERNAME }}/mavenhelloworld:${{ env.PATCH_VER }}
+         image: ${{ secrets.DOCKERHUB_USERNAME }}/mavenhelloworld:${{ env.PATCH_VER }}
          
        steps:
         - name: Run image and log the user
