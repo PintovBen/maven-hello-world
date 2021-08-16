@@ -48,6 +48,8 @@ jobs:
 
       needs: patch-build
       runs-on: ubuntu-latest
+      env:
+        PATCH_VER: 1.0.1
       steps:
         - name: Download build artifact
           uses: actions/download-artifact@v2
@@ -72,7 +74,7 @@ jobs:
            context: /home/runner/work/maven-hello-world/maven-hello-world/my-app
            file: /home/runner/work/maven-hello-world/maven-hello-world/my-app/Dockerfile
            push: true
-           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/mavenhelloworld:${{ env.PATCH_VER }}
+           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mavenhelloworld:${{ env.PATCH_VER }}
             
         
           
