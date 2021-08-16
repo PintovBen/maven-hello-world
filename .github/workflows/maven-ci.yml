@@ -10,15 +10,17 @@ on:
     branches: [ master ]
     
 
-
+env:
+  PATCH_VER: 1.0.1
+  
 jobs:
   
   patch-build:
 
     runs-on: ubuntu-latest
-    env:
-      PATCH_VER: 1.0.1
-      IMAGE_NAME: maven-hello-world:$PATCH_VER
+    defaults:
+     run:
+      working-directory: ./my-app
    
     steps:
     - uses: actions/checkout@v2
@@ -29,13 +31,13 @@ jobs:
         distribution: 'adopt'
         
     - name: Patch JAR version
-      run: cd my-app && mvn versions:set -D newVersion=${{ env.PATCH_VER }}
+      run: mvn versions:set -D newVersion=${{ env.PATCH_VER }}
       
     - name: Compile with Maven
-      run: cd my-app && mvn compile
+      run: mvn compile
     
     - name: Build with Maven
-      run: cd my-app && mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml
       
     - name: Create artifact for the build
       uses: actions/upload-artifact@v2
@@ -48,8 +50,6 @@ jobs:
 
       needs: patch-build
       runs-on: ubuntu-latest
-      env:
-        PATCH_VER: 1.0.1
       steps:
         - name: Download build artifact
           uses: actions/download-artifact@v2
@@ -76,6 +76,14 @@ jobs:
            file: ./build/Dockerfile
            push: true
            tags: ${{ secrets.DOCKERHUB_USERNAME }}/mavenhelloworld:${{ env.PATCH_VER }}
+     
+  run-image:
+       
+       name: Run the Docker Image created in previous job
+       runs-on: ubuntu-latest
+       container:
+         image: ${{secrets.DOCKERHUB_USERNAME }}/mavenhelloworld:${{ env.PATCH_VER }}
+
             
         
           
