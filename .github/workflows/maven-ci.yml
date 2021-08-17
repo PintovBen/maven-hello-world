@@ -12,6 +12,7 @@ on:
 
 env:
   PATCH_VER: 1.0.1
+  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/maven-hello-world:${{ env.PATCH_VER }}
   
 jobs:
   
@@ -83,7 +84,7 @@ jobs:
        needs: build-image-and-push
        runs-on: ubuntu-latest
        container:
-         image: benpintov/mavenhelloworld
+         image: ${{ env.IMAGE_NAME }}
          
        steps:
         - name: Run image and log the user
