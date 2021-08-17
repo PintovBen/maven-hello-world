@@ -88,7 +88,7 @@ jobs:
        steps:
         - name: Run image and log the user
           run: |
-            whoami
+            java -jar /usr/app/my-app-1.0.1.jar
          
 
         
