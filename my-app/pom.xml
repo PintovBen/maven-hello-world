@@ -11,15 +11,13 @@
   <properties>
       <!-- This property will be set by the Maven Dependency plugin -->
       <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
+  </properties>
 
-      <scm>
+  <scm>
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
         <url>https://github.com/PintovBen/maven-hello-world.git</url>
-       </scm>
-
-       
-  </properties>
+  </scm>
 
   <dependencies>
     <dependency>
