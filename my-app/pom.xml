@@ -51,6 +51,7 @@
             <scmCommentPrefix>[ci skip]</scmCommentPrefix>
             <tagNameFormat>@{project.version}</tagNameFormat>
         </configuration>
+    </plugin>
     <plugin>
 	<groupId>org.codehaus.mojo</groupId>
 	<artifactId>exec-maven-plugin</artifactId>
